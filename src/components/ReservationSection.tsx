@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Calendar, Users, Clock, Mail, Phone, User, CheckCircle, Info } from 'lucide-react';
 import { Reservation, Language } from '../types';
 import { TRANSLATIONS } from '../data/translations';
+import { ApiService } from '../services/api';
 
 interface ReservationSectionProps {
   language: Language;
@@ -38,7 +39,7 @@ export default function ReservationSection({ language }: ReservationSectionProps
     }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email || !formData.phone || !formData.date) {
       return;
@@ -46,15 +47,15 @@ export default function ReservationSection({ language }: ReservationSectionProps
 
     setLoading(true);
 
-    // Simulate luxury confirmation process
-    setTimeout(() => {
-      const uniqueCode = `BRL-${Math.floor(100000 + Math.random() * 900000)}`;
-      setConfirmedReservation({
-        ...formData,
-        confirmationCode: uniqueCode
-      });
+    try {
+      const reservation = await ApiService.createReservation(formData);
+      setConfirmedReservation(reservation);
+    } catch (error) {
+      console.error(error);
+      // In a real app, show error state here.
+    } finally {
       setLoading(false);
-    }, 1800);
+    }
   };
 
   const resetForm = () => {

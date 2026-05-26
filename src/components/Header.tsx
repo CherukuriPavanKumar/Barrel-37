@@ -55,6 +55,8 @@ export default function Header({ activePage, setActivePage, currentTime, languag
               onClick={() => handleNavClick('home')}
               className="group flex flex-col items-start transition-all cursor-pointer text-left"
             >
+              {/* TODO: Add Client Logo Image here once provided */}
+              {/* <img src="/logo.png" alt="Barrel 37 Logo" className="h-8 md:h-10 mb-2" /> */}
               <span className="text-lg md:text-xl font-serif tracking-[0.2em] font-bold text-cream group-hover:text-gold transition-colors leading-none">
                 BARREL 37
               </span>

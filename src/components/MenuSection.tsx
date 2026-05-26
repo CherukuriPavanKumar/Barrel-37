@@ -40,35 +40,35 @@ export default function MenuSection({ language, menuItems }: MenuSectionProps) {
 
   // Match logic for the "Find Your Drink" wizard
   const handleMatchCalculation = (flavor: string, style: string, region: string) => {
-    // Attempt to match from actual localized state
-    let match = localizedItems[0]; // fallback
+    // Dynamic matching algorithm based on attributes rather than hardcoded IDs
+    const scoredItems = localizedItems.map(item => {
+      let score = 0;
+      const textCorpus = `${item.name} ${item.description} ${item.sensoryNotes} ${item.ingredients.join(' ')}`.toLowerCase();
+      
+      // Match flavor
+      if (flavor === 'smoky' && (textCorpus.includes('smok') || textCorpus.includes('peat') || textCorpus.includes('char'))) score += 5;
+      if (flavor === 'sweet' && (textCorpus.includes('sweet') || textCorpus.includes('honey') || textCorpus.includes('caramel') || textCorpus.includes('vanilla'))) score += 5;
+      if (flavor === 'fruity' && (textCorpus.includes('fruit') || textCorpus.includes('citrus') || textCorpus.includes('apple') || textCorpus.includes('orange'))) score += 5;
+      if (flavor === 'spicy' && (textCorpus.includes('spice') || textCorpus.includes('ginger') || textCorpus.includes('pepper') || textCorpus.includes('clove'))) score += 5;
+      
+      // Match style
+      if (style === 'cocktail' && item.category === 'cocktail') score += 5;
+      if (style === 'neat' && item.category === 'whisky') score += 3;
+      if (style === 'rocks' && item.category === 'whisky') score += 3;
+      
+      // Check region origin hints
+      if (region === 'scotland' && (textCorpus.includes('scot') || textCorpus.includes('highland') || textCorpus.includes('islay'))) score += 4;
+      if (region === 'japan' && (textCorpus.includes('japan') || textCorpus.includes('mizunara'))) score += 4;
+      if (region === 'other' && (textCorpus.includes('ireland') || textCorpus.includes('irish') || textCorpus.includes('india'))) score += 4;
+      
+      return { item, score };
+    });
+
+    // Sort by descending score
+    scoredItems.sort((a, b) => b.score - a.score);
     
-    if (flavor === 'smoky') {
-      // Lagavulin or Smoky Old fashioned
-      match = localizedItems.find(i => i.id === 'w-4' || i.id === 'c-2') || localizedItems[3];
-    } else if (style === 'cocktail') {
-      // c-1, c-2, c-3
-       match = localizedItems.find(i => i.category === 'cocktail') || localizedItems[6];
-    } else if (flavor === 'sweet') {
-      // Glenfiddich or Macallan or Hibiki
-      if (region === 'japan') {
-        match = localizedItems.find(i => i.id === 'w-3') || localizedItems[2];
-      } else {
-        match = localizedItems.find(i => i.id === 'w-1' || i.id === 'w-2') || localizedItems[1];
-      }
-    } else if (flavor === 'fruity') {
-      if (region === 'scotland') {
-        match = localizedItems.find(i => i.id === 'w-1') || localizedItems[0];
-      } else if (region === 'japan') {
-        match = localizedItems.find(i => i.id === 'w-3') || localizedItems[2];
-      } else {
-        match = localizedItems.find(i => i.id === 'w-6') || localizedItems[5];
-      }
-    } else if (flavor === 'spicy') {
-      match = localizedItems.find(i => i.id === 'w-5' || i.id === 'c-3' || i.id === 'w-6') || localizedItems[4];
-    }
-    
-    setMatchedDrink(match);
+    // Pick highest scoring item, fallback to first item
+    setMatchedDrink(scoredItems[0]?.score > 0 ? scoredItems[0].item : localizedItems[0]);
     setQuizStep(4);
   };
 

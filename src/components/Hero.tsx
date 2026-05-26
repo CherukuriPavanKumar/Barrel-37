@@ -42,7 +42,6 @@ export default function Hero({ setActivePage, language }: HeroProps) {
         : 'Our curator tastes hundreds of expressions each year. Only the ones that tell a story make it onto our shelf. When a bottle arrives at Barrel 37, it has already survived a very strict edit — nose, palate, finish, and the context of this room.',
       stats: [
         { val: '200+', label: language === 'pl' ? 'Butelek na półce' : 'Bottles on shelf' },
-        { val: '40+', label: language === 'pl' ? 'Różnych destylarni' : 'Distilleries' },
         { val: '8', label: language === 'pl' ? 'Krajów pochodzenia' : 'Countries represented' }
       ]
     },
