@@ -59,7 +59,7 @@ export default function AmbienceSection({ language }: AmbienceSectionProps) {
           <p className="text-xs md:text-sm text-neutral-400 font-sans max-w-md leading-relaxed text-center">
             {language === 'pl'
               ? 'W każdym rogu Barrel 37 znajdziesz rzemiosło, intymne oświetlenie i historię wypaloną w drewnie.'
-              : 'Warm torch light, rustic brick walls, and custom room notes of aged cedar wood. Explore the rooms of our Kazimierz crypt.'}
+              : 'Warm torch light, rustic brick walls, and custom room notes of aged cedar wood.'}
           </p>
         </div>
 

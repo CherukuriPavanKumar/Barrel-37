@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Lock, User, Plus, Trash2, LogOut, CheckCircle, AlertCircle, Sparkles, Image, Eye, EyeOff } from 'lucide-react';
 import { MenuItem, Language } from '../types';
 
+import { ApiService } from '../services/api';
+
 interface AdminPanelProps {
   language: Language;
   menuItems: MenuItem[];
@@ -62,23 +64,27 @@ export default function AdminPanel({
 
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  const handleLogin = (e: FormEvent) => {
+  const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
-    if (username.trim().toLowerCase() === 'admin' && password === 'barrel37') {
+    setLoginError('');
+    
+    const success = await ApiService.login(username.trim().toLowerCase(), password);
+    
+    if (success) {
       setIsAuthenticated(true);
       localStorage.setItem('barrel37_admin_auth', 'true');
-      setLoginError('');
       triggerNotification('success', language === 'pl' ? 'Pomyślnie zalogowano w krypcie!' : 'Successfully logged into the Crypt!');
     } else {
       setLoginError(
         language === 'pl' 
-          ? 'Niewłaściwe poświadczenia. Spróbuj admin / barrel37' 
-          : 'Invalid credentials. Enter admin / barrel37'
+          ? 'Niewłaściwe poświadczenia. Spróbuj powtórnie.' 
+          : 'Invalid credentials. Please try again.'
       );
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await ApiService.logout();
     setIsAuthenticated(false);
     localStorage.removeItem('barrel37_admin_auth');
     triggerNotification('success', language === 'pl' ? 'Wylogowano pomyślnie.' : 'Logged out securely.');

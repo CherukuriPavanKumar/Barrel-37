@@ -9,9 +9,7 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
   
   const schedules = [
     { day: language === 'pl' ? 'Poniedziałek' : 'Monday', hours: language === 'pl' ? 'Zamknięte (Odpoczynek)' : 'Closed (Rest Day)' },
-    { day: language === 'pl' ? 'Wtorek - Czwartek' : 'Tuesday - Thursday', hours: '18:00 — 01:00' },
-    { day: language === 'pl' ? 'Piątek - Sobota' : 'Friday - Saturday', hours: '18:00 — 03:00' },
-    { day: language === 'pl' ? 'Niedziela' : 'Sunday', hours: '18:00 — 00:00' }
+    { day: language === 'pl' ? 'Wtorek - Niedziela' : 'Tuesday - Sunday', hours: '11:00 — 01:00' },
   ];
 
   return (
@@ -29,8 +27,8 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
           <div className="h-[1px] bg-neutral-900 w-24 my-1"></div>
           <p className="text-xs md:text-sm text-neutral-400 font-sans max-w-md leading-relaxed text-center">
             {language === 'pl'
-              ? 'Ukryty w zabytkowych podziemiach krakowskiego Kazimierza. Podążaj za zapachem dębu.'
-              : 'Located in the historic cellar of Krakow\'s Kazimierz, beneath the old stone structures.'}
+              ? 'Ukryty w sercu krakowskiego Kazimierza. Podążaj za zapachem dębu.'
+              : 'Located in Krakow\'s Kazimierz.'}
           </p>
         </div>
 
@@ -57,17 +55,7 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
               </div>
             </div>
 
-            {/* Speakeasy Secret Entry Guide */}
-            <div className="border border-neutral-900 bg-neutral-950/40 p-6 md:p-8">
-              <span className="text-[10px] font-mono text-gold tracking-widest uppercase flex items-center gap-1.5 label-icon">
-                <HelpCircle size={12} className="text-gold" /> {language === 'pl' ? 'INSTRUKCJA WEJŚCIA' : 'SECRET ENTRY CODE'}
-              </span>
-              <p className="text-xs text-neutral-400 font-sans leading-relaxed mt-4">
-                {language === 'pl'
-                  ? 'Gdy dotrzesz na ulicę Józefa Dietla 37, szukaj nieozakowanego, grafitowego wejścia z małą mosiężną tabliczką "37". Należy nacisnąć dzwonek lub zapukać dwukrotnie. Barman otworzy drzwi tak szybko, jak sprzyjają temu warunki sali.'
-                  : 'Upon arriving at ul. Józefa Dietla 37, locate the unmarked dark graphite door featuring a generic small brass plate numbered "37". Please knock twice or ring the button once. Our host will admit you promptly if room capacity permits.'}
-              </p>
-            </div>
+            {/* Speakeasy Secret Entry Guide - Removed per user request */}
 
             {/* Contact Specs */}
             <div className="border border-neutral-900 bg-neutral-950/40 p-6 md:p-8 space-y-4">
@@ -104,48 +92,39 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
 
           </div>
 
-          {/* Right Column Polish speakeasy architectural stylized vector maps */}
-          <div className="lg:col-span-7">
-            <div className="border border-neutral-900 p-2 bg-neutral-950 relative overflow-hidden group">
-              <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-gold z-10"></div>
-              <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-gold z-10"></div>
+          {/* Right Column Polish speakeasy interactive map */}
+          <div className="lg:col-span-7 flex flex-col">
+            <div className="border border-neutral-900 p-2 bg-neutral-950 relative overflow-hidden group flex-grow min-h-[400px] flex flex-col">
+              <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-gold z-10 pointer-events-none"></div>
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-gold z-10 pointer-events-none"></div>
               
-              <div className="relative aspect-[16/12] bg-[#020202] flex flex-col items-center justify-center p-8 text-center border border-neutral-900 select-none">
+              <div className="relative w-full flex-grow bg-[#020202] border border-neutral-900 overflow-hidden min-h-[400px]">
+                {/* CSS filtered iframe to enforce luxury dark-mode on standard Google Maps */}
+                <iframe
+                  className="absolute inset-0 w-full h-full"
+                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=J%C3%B3zefa%20Dietla%2037,%2031-062%20Krak%C3%B3w,%20Poland+(Barrel%2037)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                  style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(85%) contrast(110%)' }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Barrel 37 Location"
+                ></iframe>
                 
-                {/* Visual coordinate lines */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#111111_1px,transparent_1px),linear-gradient(to_bottom,#111111_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-40"></div>
-                <div className="absolute top-1/2 left-0 w-full h-px bg-gold/10"></div>
-                <div className="absolute left-1/2 top-0 w-px h-full bg-gold/10"></div>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-gold/5 animate-pulse"></div>
-
-                {/* Simulated luxury tactical map of Kazimierz */}
-                <div className="relative z-10 flex flex-col items-center animate-fadeIn">
-                  <div className="w-4 h-4 rounded-full bg-gold animate-ping absolute"></div>
-                  <div className="w-4 h-4 rounded-full bg-gold border-2 border-black relative z-10 flex items-center justify-center">
-                    <div className="w-1.5 h-1.5 rounded-full bg-black"></div>
-                  </div>
-                  
-                  <span className="font-serif text-cream text-[13px] tracking-widest uppercase mt-4 block font-extrabold">BARREL 37 SPEAKEASY</span>
-                  <span className="font-mono text-gold text-[9px] tracking-[0.2em] uppercase mt-1">lat. 50.0528° N, lon. 19.9443° E</span>
-                  
-                  <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-4 max-w-sm text-left border-t border-neutral-900 pt-6">
-                    <div className="text-[10px] font-mono">
-                      <p className="text-neutral-500 uppercase">District:</p>
-                      <p className="text-cream mt-0.5">Kraków Kazimierz</p>
-                    </div>
-                    <div className="text-[10px] font-mono">
-                      <p className="text-neutral-500 uppercase">Nearest Stop:</p>
-                      <p className="text-cream mt-0.5">Starowiślna / Dietla</p>
-                    </div>
-                    <div className="text-[10px] font-mono col-span-2 text-center border-t border-neutral-900/60 pt-4">
-                      <p className="text-neutral-500 uppercase">Access Status:</p>
-                      <p className="text-gold mt-0.5 font-bold uppercase">{language === 'pl' ? 'PRYWATNY INGRESS OTWARTY' : 'PRIVATE INGRESS ACTIVE'}</p>
-                    </div>
-                  </div>
-                </div>
-
+                {/* Edging shadow to blend map into the container seamlessly */}
+                <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_60px_rgba(0,0,0,1)]"></div>
               </div>
             </div>
+
+            {/* Direct Link to open phone app navigation */}
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Józefa+Dietla+37,+Kraków"
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mt-4 px-6 py-4 bg-transparent hover:bg-neutral-900 border border-neutral-800 hover:border-gold text-neutral-400 hover:text-gold text-[10px] font-mono uppercase tracking-[0.2em] transition-all cursor-pointer text-center focus:outline-none flex justify-center items-center gap-2 group"
+            >
+              <MapPin size={12} className="group-hover:animate-bounce" />
+              {language === 'pl' ? 'Otwórz nawigację (Zdobądź Wskazówki)' : 'Get Walking Directions (Open App)'}
+            </a>
           </div>
 
         </div>

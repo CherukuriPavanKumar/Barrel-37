@@ -11,44 +11,45 @@ import AmbienceSection from './components/AmbienceSection';
 import EventsSection from './components/EventsSection';
 import FindUsSection from './components/FindUsSection';
 import AdminPanel from './components/AdminPanel';
-import { MENU_ITEMS } from './data/menu';
+import AgeGate from './components/AgeGate';
+import { ApiService } from './services/api';
 
 export default function App() {
   const [activePage, setActivePage] = useState<ActivePage>('home');
   const [currentTime, setCurrentTime] = useState<string>('18:00:00');
   const [language, setLanguage] = useState<Language>('en');
 
-  // Menu items state with localStorage backup
+  // Menu items state with backend sync
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
+  const [isLoadingMenu, setIsLoadingMenu] = useState(true);
 
   useEffect(() => {
-    const saved = localStorage.getItem('barrel37_menu_items');
-    if (saved) {
-      try {
-        setMenuItems(JSON.parse(saved));
-      } catch (e) {
-        setMenuItems(MENU_ITEMS);
-      }
-    } else {
-      setMenuItems(MENU_ITEMS);
-    }
+    const fetchMenu = async () => {
+      setIsLoadingMenu(true);
+      const data = await ApiService.getMenuItems();
+      setMenuItems(data);
+      setIsLoadingMenu(false);
+    };
+    fetchMenu();
   }, []);
 
-  const handleAddMenuItem = (item: MenuItem) => {
-    const updated = [item, ...menuItems];
+  const handleAddMenuItem = async (item: MenuItem) => {
+    // Optimistic update
+    setMenuItems([item, ...menuItems]);
+    const updated = await ApiService.addMenuItem(item);
     setMenuItems(updated);
-    localStorage.setItem('barrel37_menu_items', JSON.stringify(updated));
   };
 
-  const handleDeleteMenuItem = (id: string) => {
-    const updated = menuItems.filter(item => item.id !== id);
+  const handleDeleteMenuItem = async (id: string) => {
+    // Optimistic update
+    setMenuItems(menuItems.filter(item => item.id !== id));
+    const updated = await ApiService.deleteMenuItem(id);
     setMenuItems(updated);
-    localStorage.setItem('barrel37_menu_items', JSON.stringify(updated));
   };
 
-  const handleResetMenu = () => {
-    setMenuItems(MENU_ITEMS);
-    localStorage.removeItem('barrel37_menu_items');
+  const handleResetMenu = async () => {
+    const defaultMenu = await ApiService.resetMenu();
+    setMenuItems(defaultMenu);
   };
 
   // Multi-page scrolls reset
@@ -120,6 +121,7 @@ export default function App() {
 
   return (
     <div className="bg-black min-h-screen text-[#F4F0EA] flex flex-col font-sans select-none selection:bg-[#cbbba0] selection:text-black antialiased relative">
+      <AgeGate language={language} />
       
       {/* Decorative vertical outer grid lines for speakeasy Gola wireframe design */}
       <div className="absolute inset-y-0 left-4 md:left-8 w-px bg-neutral-950 pointer-events-none z-10"></div>

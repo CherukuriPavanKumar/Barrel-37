@@ -98,9 +98,8 @@ export default function Footer({ setActivePage, language }: FooterProps) {
           <span className="text-[10px] text-neutral-500 uppercase tracking-[0.3em] font-mono">{t.location}</span>
           <div className="text-xs text-neutral-300 font-sans leading-relaxed space-y-4">
             <div>
-              <p className="font-semibold text-gold text-[10px] uppercase font-mono tracking-wider">Kazimierz Crypt</p>
               <p>ul. Józefa Dietla 37, Kraków,<br />31-062, Poland</p>
-              <p className="text-[11px] text-neutral-500 font-mono mt-1">+48 22 555 01 28</p>
+              <p className="text-[11px] text-neutral-500 font-mono mt-1">joinusbarrel37@gmail.com</p>
             </div>
           </div>
         </div>
@@ -110,10 +109,10 @@ export default function Footer({ setActivePage, language }: FooterProps) {
           <span className="text-[10px] text-neutral-500 uppercase tracking-[0.3em] font-mono">{t.openingHours}</span>
           <p className="text-xs text-neutral-300 font-sans leading-relaxed">
             {language === 'pl' ? 'Wtorek — Niedziela' : 'Tuesday — Sunday'}<br />
-            18:00 — 01:00 / 03:00 (Weekend)
+            11:00 AM — 12:00 AM
           </p>
           <div className="pt-2 border-t border-[#181818] mt-2 text-[10px] text-neutral-500">
-            <span className="block">{language === 'pl' ? 'Poniedziałek — Zamknięte' : 'Monday — Closed (Rest)'}</span>
+            <span className="block">{language === 'pl' ? 'Poniedziałek — Zamknięte' : 'Monday — Closed'}</span>
           </div>
         </div>
 
