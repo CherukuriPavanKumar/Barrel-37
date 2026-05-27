@@ -160,7 +160,7 @@ export default function Hero({ setActivePage, language }: HeroProps) {
                   <img
                     src={HEROBAR_IMAGE}
                     alt="Barrel 37 Ambient Whiskey Space"
-                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[2000ms] object-center grayscale group-hover:grayscale-0"
+                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[2000ms] object-center"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
@@ -235,7 +235,7 @@ export default function Hero({ setActivePage, language }: HeroProps) {
                   <img
                     src={STORYBAR_IMAGE}
                     alt="Premium Whiskey Selection"
-                    className="w-full h-full object-cover grayscale opacity-85 group-hover:scale-105 transition-all duration-[2000ms]"
+                    className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-all duration-[2000ms]"
                     referrerPolicy="no-referrer"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
