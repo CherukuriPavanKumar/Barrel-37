@@ -12,6 +12,7 @@ export interface MenuItem {
 }
 
 export interface Reservation {
+  id?: string;
   fullName: string;
   email: string;
   phone: string;
@@ -20,6 +21,7 @@ export interface Reservation {
   guests: number;
   specialRequests?: string;
   confirmationCode?: string;
+  created_at?: string;
 }
 
 export type ActivePage = 'home' | 'menu' | 'ambience' | 'about' | 'events' | 'find-us' | 'reservation' | 'admin';

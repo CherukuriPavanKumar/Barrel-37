@@ -1,7 +1,7 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Lock, User, Plus, Trash2, LogOut, CheckCircle, AlertCircle, Sparkles, Image, Eye, EyeOff } from 'lucide-react';
-import { MenuItem, Language } from '../types';
+import { Lock, User, Plus, Trash2, LogOut, CheckCircle, AlertCircle, Sparkles, Image, Eye, EyeOff, BookOpen, Users, Calendar, Clock, Phone, Mail } from 'lucide-react';
+import { MenuItem, Language, Reservation } from '../types';
 
 import { ApiService } from '../services/api';
 
@@ -62,6 +62,10 @@ export default function AdminPanel({
   const [selectedPresetImage, setSelectedPresetImage] = useState(PRESET_IMAGES[0].url);
   const [imageType, setImageType] = useState<'preset' | 'custom'>('preset');
 
+  const [activeTab, setActiveTab] = useState<'menu' | 'reservations'>('menu');
+  const [reservations, setReservations] = useState<Reservation[]>([]);
+  const [isLoadingReservations, setIsLoadingReservations] = useState(false);
+
   const [notification, setNotification] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleLogin = async (e: FormEvent) => {
@@ -88,6 +92,27 @@ export default function AdminPanel({
     setIsAuthenticated(false);
     localStorage.removeItem('barrel37_admin_auth');
     triggerNotification('success', language === 'pl' ? 'Wylogowano pomyślnie.' : 'Logged out securely.');
+  };
+
+  useEffect(() => {
+    if (isAuthenticated && activeTab === 'reservations') {
+      const fetchRes = async () => {
+        setIsLoadingReservations(true);
+        const data = await ApiService.getReservations();
+        setReservations(data);
+        setIsLoadingReservations(false);
+      };
+      fetchRes();
+    }
+  }, [isAuthenticated, activeTab]);
+
+  const handleDeleteReservation = async (id?: string) => {
+    if (!id) return;
+    if (window.confirm(language === 'pl' ? 'Czy na pewno chcesz usunąć tę rezerwację?' : 'Are you sure you want to remove this reservation?')) {
+      setReservations(reservations.filter(r => r.id !== id && r.confirmationCode !== id));
+      await ApiService.deleteReservation(id);
+      triggerNotification('success', language === 'pl' ? 'Rezerwacja usunięta.' : 'Reservation removed securely.');
+    }
   };
 
   const triggerNotification = (type: 'success' | 'error', message: string) => {
@@ -283,7 +308,48 @@ export default function AdminPanel({
           </div>
         ) : (
           /* ================= DASHBOARD GATEWAY ================= */
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="flex flex-col gap-8">
+            
+            {/* Top Navigation Tabs */}
+            <div className="flex items-center justify-center border-b border-neutral-900 pb-px mb-2">
+              <div className="flex gap-8">
+                <button
+                  onClick={() => setActiveTab('menu')}
+                  className={`pb-4 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] transition-all relative ${
+                    activeTab === 'menu' ? 'text-gold' : 'text-neutral-500 hover:text-neutral-300'
+                  }`}
+                >
+                  <BookOpen size={14} />
+                  {language === 'pl' ? 'Księga Menu' : 'Curator’s Ledger'}
+                  {activeTab === 'menu' && (
+                    <motion.div layoutId="adminTabIndicator" className="absolute bottom-0 left-0 right-0 h-px bg-gold" />
+                  )}
+                </button>
+                <button
+                  onClick={() => setActiveTab('reservations')}
+                  className={`pb-4 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] transition-all relative ${
+                    activeTab === 'reservations' ? 'text-gold' : 'text-neutral-500 hover:text-neutral-300'
+                  }`}
+                >
+                  <Users size={14} />
+                  {language === 'pl' ? 'Rejestr Gości' : 'Guest Registry'}
+                  {activeTab === 'reservations' && (
+                    <motion.div layoutId="adminTabIndicator" className="absolute bottom-0 left-0 right-0 h-px bg-gold" />
+                  )}
+                </button>
+              </div>
+              <div className="ml-auto pb-4">
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-1.5 px-3 py-1.5 border border-neutral-800 text-neutral-500 hover:text-red-400 hover:border-red-900/40 text-[9px] font-mono uppercase tracking-widest transition-colors cursor-pointer"
+                >
+                  <LogOut size={11} /> {language === 'pl' ? 'Wyloguj' : 'Secure Exit'}
+                </button>
+              </div>
+            </div>
+
+            {activeTab === 'menu' ? (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             {/* LEFT COMPONENT: ADD FLUID INTAKES FORM */}
             <div className="lg:col-span-7 space-y-6">
@@ -294,13 +360,6 @@ export default function AdminPanel({
                   <span className="text-xs uppercase font-mono tracking-widest text-gold flex items-center gap-2">
                     <Plus size={16} /> {language === 'pl' ? 'Uzupełnij Kartę' : 'Introduce New Creation'}
                   </span>
-                  
-                  <button
-                    onClick={handleLogout}
-                    className="flex items-center gap-1.5 px-3 py-1.5 border border-neutral-800 text-neutral-500 hover:text-red-400 hover:border-red-900/40 text-[9px] font-mono uppercase tracking-widest transition-colors cursor-pointer"
-                  >
-                    <LogOut size={11} /> {language === 'pl' ? 'Blokada' : 'Secure Exit'}
-                  </button>
                 </div>
 
                 <form onSubmit={handleAddItem} className="space-y-5">
@@ -618,8 +677,97 @@ export default function AdminPanel({
                 </div>
               </div>
 
+              </div>
             </div>
+            ) : (
+              <div className="bg-neutral-950 border border-neutral-900 p-6 md:p-8 min-h-[500px]">
+                <div className="pb-6 border-b border-neutral-900 mb-6 flex justify-between items-center">
+                  <div>
+                    <h2 className="text-xl font-serif text-cream mb-1">
+                      {language === 'pl' ? 'Zarejestrowane Rezerwacje' : 'Incoming Reservations'}
+                    </h2>
+                    <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                      {reservations.length} {language === 'pl' ? 'Zapisów w systemie' : 'Active records found'}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => {
+                      setIsLoadingReservations(true);
+                      ApiService.getReservations().then(data => {
+                        setReservations(data);
+                        setIsLoadingReservations(false);
+                      });
+                    }}
+                    className="px-4 py-2 border border-neutral-800 hover:border-gold hover:text-gold text-[9px] font-mono uppercase tracking-widest transition-colors cursor-pointer"
+                  >
+                    {language === 'pl' ? 'Odśwież' : 'Refresh Ledger'}
+                  </button>
+                </div>
 
+                {isLoadingReservations ? (
+                  <div className="flex justify-center items-center h-48 text-gold">
+                    <span className="text-[10px] font-mono uppercase tracking-widest animate-pulse">Decrypting Ledger...</span>
+                  </div>
+                ) : reservations.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center h-48 text-center border border-dashed border-neutral-900">
+                    <Users size={24} className="text-neutral-700 mb-3" />
+                    <p className="text-xs font-sans text-neutral-500">
+                      {language === 'pl' ? 'Brak rezerwacji w systemie.' : 'No reservations recorded yet.'}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {reservations.map(res => (
+                      <div key={res.id || res.confirmationCode} className="border border-neutral-900 bg-[#090909] p-5 relative group flex flex-col">
+                        <div className="absolute top-5 right-5 opacity-0 group-hover:opacity-100 transition-opacity">
+                          <button
+                            onClick={() => handleDeleteReservation(res.id)}
+                            className="text-neutral-600 hover:text-red-400 transition-colors cursor-pointer"
+                            title={language === 'pl' ? 'Usuń rezerwację' : 'Delete reservation'}
+                          >
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
+                        
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-8 h-8 border border-neutral-800 flex items-center justify-center text-gold shrink-0">
+                            <span className="font-serif text-sm">{res.guests}</span>
+                          </div>
+                          <div>
+                            <h3 className="text-sm font-serif text-cream uppercase">{res.fullName}</h3>
+                            <span className="text-[9px] font-mono uppercase tracking-widest text-neutral-500 flex items-center gap-2 mt-1">
+                              <Calendar size={10} /> {res.date} <Clock size={10} className="ml-1" /> {res.time}
+                            </span>
+                          </div>
+                        </div>
+
+                        <div className="space-y-2 mt-auto pt-4 border-t border-neutral-900">
+                          <p className="text-[10px] font-mono text-neutral-400 flex items-center gap-2">
+                            <Mail size={12} className="text-neutral-600" /> {res.email}
+                          </p>
+                          <p className="text-[10px] font-mono text-neutral-400 flex items-center gap-2">
+                            <Phone size={12} className="text-neutral-600" /> {res.phone}
+                          </p>
+                        </div>
+
+                        {res.specialRequests && (
+                          <div className="mt-4 p-3 border border-neutral-800/50 bg-black">
+                            <span className="text-[9px] font-mono uppercase tracking-widest text-gold mb-1 block">
+                              {language === 'pl' ? 'Specjalne życzenia:' : 'Special Requests:'}
+                            </span>
+                            <p className="text-xs font-sans text-neutral-300 italic line-clamp-3">"{res.specialRequests}"</p>
+                          </div>
+                        )}
+                        
+                        <div className="mt-4 pt-4 text-right">
+                          <span className="text-[8px] font-mono uppercase text-neutral-700">ID: {res.confirmationCode}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
 
