@@ -83,7 +83,7 @@ export default function AmbienceSection({ language }: AmbienceSectionProps) {
                     <img 
                       src={sec.img} 
                       alt={sec.title} 
-                      className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[1500ms] grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100"
+                      className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[1500ms] opacity-80 group-hover:opacity-100"
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
