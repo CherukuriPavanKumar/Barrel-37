@@ -103,5 +103,33 @@ export const ApiService = {
     }
 
     return newRes;
+  },
+
+  async getReservations(): Promise<Reservation[]> {
+    const { data, error } = await supabase
+      .from('reservations')
+      .select('*')
+      .order('created_at', { ascending: false });
+      
+    if (error || !data) {
+      console.error("Error fetching reservations:", error);
+      const saved = localStorage.getItem('barrel37_reservations');
+      return saved ? JSON.parse(saved) : [];
+    }
+    return data as Reservation[];
+  },
+
+  async deleteReservation(id: string): Promise<void> {
+    const { error } = await supabase.from('reservations').delete().eq('id', id);
+    if (error) {
+      console.error("Error deleting reservation:", error);
+      // Optional fallback local storage update
+      const saved = localStorage.getItem('barrel37_reservations');
+      if (saved) {
+        const allRes = JSON.parse(saved);
+        const updated = allRes.filter((r: Reservation) => r.id !== id && r.confirmationCode !== id);
+        localStorage.setItem('barrel37_reservations', JSON.stringify(updated));
+      }
+    }
   }
 };
