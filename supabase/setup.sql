@@ -60,3 +60,10 @@ CREATE POLICY "Only authenticated users can update reservations" ON reservations
   
 CREATE POLICY "Only authenticated users can delete reservations" ON reservations
   FOR DELETE USING (auth.role() = 'authenticated');
+
+-- 6. Grant Permissions to roles
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.menu_items TO authenticated;
+GRANT SELECT ON public.menu_items TO anon;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.reservations TO authenticated;
+GRANT INSERT ON public.reservations TO anon;
