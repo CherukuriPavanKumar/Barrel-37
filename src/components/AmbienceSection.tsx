@@ -8,9 +8,9 @@ interface AmbienceSectionProps {
 
 export default function AmbienceSection({ language }: AmbienceSectionProps) {
   const images = {
-    booths: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=800&q=80",
-    counter: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80",
-    vault: "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=800&q=80"
+    booths: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80",
+    counter: "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=800&q=80",
+    vault: "https://images.unsplash.com/photo-1600862025178-5aee093f443b?auto=format&fit=crop&w=800&q=80"
   };
 
   const sections = [

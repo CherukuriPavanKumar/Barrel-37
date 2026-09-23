@@ -21,7 +21,6 @@ export default function Header({ activePage, setActivePage, currentTime, languag
     { label: t.menu, value: 'menu' },
     { label: t.ambience, value: 'ambience' },
     { label: t.about, value: 'about' },
-    { label: t.events, value: 'events' },
     { label: t.findUs, value: 'find-us' },
     { label: t.bookTable, value: 'reservation' },
   ];

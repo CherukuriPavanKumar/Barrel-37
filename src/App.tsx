@@ -8,7 +8,6 @@ import MenuSection from './components/MenuSection';
 import AboutSection from './components/AboutSection';
 import ReservationSection from './components/ReservationSection';
 import AmbienceSection from './components/AmbienceSection';
-import EventsSection from './components/EventsSection';
 import FindUsSection from './components/FindUsSection';
 import AdminPanel from './components/AdminPanel';
 import AgeGate from './components/AgeGate';
@@ -166,12 +165,6 @@ export default function App() {
             {activePage === 'about' && (
               <AboutSection 
                 language={language}
-              />
-            )}
-            {activePage === 'events' && (
-              <EventsSection 
-                language={language}
-                setActivePage={setActivePage}
               />
             )}
             {activePage === 'find-us' && (
