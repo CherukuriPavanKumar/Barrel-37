@@ -9,7 +9,7 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
   
   const schedules = [
     { day: language === 'pl' ? 'Poniedziałek' : 'Monday', hours: language === 'pl' ? 'Zamknięte (Odpoczynek)' : 'Closed (Rest Day)' },
-    { day: language === 'pl' ? 'Wtorek - Niedziela' : 'Tuesday - Sunday', hours: '11:00 — 01:00' },
+    { day: language === 'pl' ? 'Wtorek - Niedziela' : 'Tuesday - Sunday', hours: '12:00 — 00:00' },
   ];
 
   return (
@@ -75,7 +75,7 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
                 </div>
                 <div>
                   <p className="text-[9px] font-mono text-neutral-500 uppercase leading-none">{language === 'pl' ? 'REZERWACJA / TELEFON' : 'RESERVATIONS PHONE'}</p>
-                  <p className="font-sans text-cream font-medium mt-1">+48 22 555 01 28</p>
+                  <p className="font-sans text-cream font-medium mt-1">+48-500458966</p>
                 </div>
               </div>
 
@@ -85,7 +85,7 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
                 </div>
                 <div>
                   <p className="text-[9px] font-mono text-neutral-500 uppercase leading-none">{language === 'pl' ? 'EMAIL' : 'ELECTRONIC MAIL'}</p>
-                  <p className="font-sans text-cream font-medium mt-1">contact@barrel37.com</p>
+                  <p className="font-sans text-cream font-medium mt-1">joinusbarrel37@gmail.com</p>
                 </div>
               </div>
             </div>

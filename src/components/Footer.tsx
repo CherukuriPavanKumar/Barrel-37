@@ -74,13 +74,6 @@ export default function Footer({ setActivePage, language }: FooterProps) {
               onClick={() => setActivePage('events')}
               className="text-xs text-[#D0C9BC] hover:text-gold transition-colors font-sans cursor-pointer uppercase tracking-wider text-left"
             >
-              {t.events}
-            </button>
-            <button
-              id="footer_lnk_findUs"
-              onClick={() => setActivePage('find-us')}
-              className="text-xs text-[#D0C9BC] hover:text-gold transition-colors font-sans cursor-pointer uppercase tracking-wider text-left"
-            >
               {t.findUs}
             </button>
             <button
@@ -100,6 +93,7 @@ export default function Footer({ setActivePage, language }: FooterProps) {
             <div>
               <p>ul. Józefa Dietla 37, Kraków,<br />31-062, Poland</p>
               <p className="text-[11px] text-neutral-500 font-mono mt-1">joinusbarrel37@gmail.com</p>
+              <p className="text-[11px] text-neutral-500 font-mono mt-1">+48-500458966</p>
             </div>
           </div>
         </div>
@@ -109,7 +103,7 @@ export default function Footer({ setActivePage, language }: FooterProps) {
           <span className="text-[10px] text-neutral-500 uppercase tracking-[0.3em] font-mono">{t.openingHours}</span>
           <p className="text-xs text-neutral-300 font-sans leading-relaxed">
             {language === 'pl' ? 'Wtorek — Niedziela' : 'Tuesday — Sunday'}<br />
-            11:00 AM — 12:00 AM
+            12:00 PM — 12:00 AM
           </p>
           <div className="pt-2 border-t border-[#181818] mt-2 text-[10px] text-neutral-500">
             <span className="block">{language === 'pl' ? 'Poniedziałek — Zamknięte' : 'Monday — Closed'}</span>
