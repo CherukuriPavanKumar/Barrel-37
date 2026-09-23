@@ -1,19 +1,19 @@
 import { MenuItem } from '../types';
 
 export const MENU_ITEMS: MenuItem[] = [
-  // --- WHISKEY ---
-  { id: 'w-1', name: 'Royal Salute', description: 'Premium blended Scotch whisky.', price: 175, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-2', name: 'Johnny Walker Blue Label', description: 'An unrivaled masterpiece.', price: 195, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-3', name: 'Johnny Walker Red Label', description: 'The world\'s best-selling Scotch whisky.', price: 18, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-4', name: 'Johnny walker Black Label', description: 'A true icon.', price: 26, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-5', name: 'Chivas Regal 12 YO', description: 'Smooth, rich and generous.', price: 35, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-6', name: 'Chivas Regal XV', description: 'Aged 15 years.', price: 55, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-7', name: 'Grant’s', description: 'Triple wood blended Scotch whisky.', price: 19, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-8', name: 'Jack Daniel’s', description: 'Tennessee whiskey.', price: 18, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-9', name: 'Ballantine’s', description: 'Finest blended Scotch whisky.', price: 17, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-10', name: 'Jameson', description: 'Irish whiskey.', price: 23, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-11', name: 'Tullamore D.E.W.', description: 'Original triple distilled Irish whiskey.', price: 26, category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-12', name: 'Glenfiddich 12 YO', description: 'Single malt Scotch whisky.', price: 55, category: 'whiskey', ingredients: [], isFood: false },
+  // --- WHISKEY (40 ml / 60 ml) ---
+  { id: 'w-1', name: 'Royal Salute', description: 'Premium blended Scotch whisky.', price: 175, priceLabel: '40 ml', price2: 262.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-2', name: 'Johnny Walker Blue Label', description: 'An unrivaled masterpiece.', price: 195, priceLabel: '40 ml', price2: 292.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-3', name: 'Johnny Walker Red Label', description: 'The world\'s best-selling Scotch whisky.', price: 18, priceLabel: '40 ml', price2: 27, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-4', name: 'Johnny Walker Black Label', description: 'A true icon.', price: 26, priceLabel: '40 ml', price2: 39, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-5', name: 'Chivas Regal 12 YO', description: 'Smooth, rich and generous.', price: 35, priceLabel: '40 ml', price2: 52.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-6', name: 'Chivas Regal XV', description: 'Aged 15 years.', price: 55, priceLabel: '40 ml', price2: 82.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-7', name: 'Grant\'s', description: 'Triple wood blended Scotch whisky.', price: 19, priceLabel: '40 ml', price2: 28.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-8', name: 'Jack Daniel\'s', description: 'Tennessee whiskey.', price: 18, priceLabel: '40 ml', price2: 27, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-9', name: 'Ballantine\'s', description: 'Finest blended Scotch whisky.', price: 17, priceLabel: '40 ml', price2: 25.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-10', name: 'Jameson', description: 'Irish whiskey.', price: 23, priceLabel: '40 ml', price2: 34.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-11', name: 'Tullamore D.E.W.', description: 'Original triple distilled Irish whiskey.', price: 26, priceLabel: '40 ml', price2: 39, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-12', name: 'Glenfiddich 12 YO', description: 'Single malt Scotch whisky.', price: 55, priceLabel: '40 ml', price2: 82.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
 
   // --- COCKTAILS ---
   { id: 'c-1', name: 'Mojito', description: 'Classic refreshing cocktail.', price: 35, category: 'cocktail', ingredients: ['White Rum', 'Fresh Mint', 'Lime Juice', 'Club Soda', 'Ice'], isFood: false },
@@ -41,38 +41,38 @@ export const MENU_ITEMS: MenuItem[] = [
   { id: 'so-2', name: 'Whiskey Sour', description: 'Timeless classic.', price: 37, category: 'sour', ingredients: ['Whiskey', 'Lemon Juice', 'Simple Syrup', 'Dash Angostura', 'Egg White'], isFood: false },
   { id: 'so-3', name: 'Amaretto Sour', description: 'Sweet and sour almond.', price: 37, category: 'sour', ingredients: ['Amaretto', 'Lemon juice', 'Simple Syrup', 'Dash Angostura', 'Egg White'], isFood: false },
 
-  // --- RUM ---
-  { id: 'r-1', name: 'Bacardi', description: 'Classic white rum.', price: 25, category: 'rum', ingredients: [], isFood: false },
-  { id: 'r-2', name: 'Havana', description: 'Cuban rum.', price: 22, category: 'rum', ingredients: [], isFood: false },
-  { id: 'r-3', name: 'Kraken', description: 'Spiced black rum.', price: 35, category: 'rum', ingredients: [], isFood: false },
+  // --- RUM (40 ml / 60 ml) ---
+  { id: 'r-1', name: 'Bacardi', description: 'Classic white rum.', price: 25, priceLabel: '40 ml', price2: 37.5, price2Label: '60 ml', category: 'rum', ingredients: [], isFood: false },
+  { id: 'r-2', name: 'Havana', description: 'Cuban rum.', price: 22, priceLabel: '40 ml', price2: 33, price2Label: '60 ml', category: 'rum', ingredients: [], isFood: false },
+  { id: 'r-3', name: 'Kraken', description: 'Spiced black rum.', price: 35, priceLabel: '40 ml', price2: 52.5, price2Label: '60 ml', category: 'rum', ingredients: [], isFood: false },
 
-  // --- TEQUILA ---
-  { id: 't-1', name: 'Olmeca', description: 'Premium tequila.', price: 27, category: 'tequila', ingredients: [], isFood: false },
-  { id: 't-2', name: 'Cuervo', description: 'Gold tequila.', price: 30, category: 'tequila', ingredients: [], isFood: false },
+  // --- TEQUILA (40 ml / 60 ml) ---
+  { id: 't-1', name: 'Olmeca', description: 'Premium tequila.', price: 27, priceLabel: '40 ml', price2: 40.5, price2Label: '60 ml', category: 'tequila', ingredients: [], isFood: false },
+  { id: 't-2', name: 'Cuervo', description: 'Gold tequila.', price: 30, priceLabel: '40 ml', price2: 45, price2Label: '60 ml', category: 'tequila', ingredients: [], isFood: false },
 
-  // --- GIN ---
-  { id: 'g-1', name: 'Bombay Sapphire', description: 'Premium dry gin.', price: 45, category: 'gin', ingredients: [], isFood: false },
-  { id: 'g-2', name: 'Hendrick’s', description: 'Scottish gin.', price: 40, category: 'gin', ingredients: [], isFood: false },
-  { id: 'g-3', name: 'Gordon’s', description: 'London dry gin.', price: 20, category: 'gin', ingredients: [], isFood: false },
+  // --- GIN (40 ml / 60 ml) ---
+  { id: 'g-1', name: 'Bombay Sapphire', description: 'Premium dry gin.', price: 45, priceLabel: '40 ml', price2: 67.5, price2Label: '60 ml', category: 'gin', ingredients: [], isFood: false },
+  { id: 'g-2', name: 'Hendrick\'s', description: 'Scottish gin.', price: 40, priceLabel: '40 ml', price2: 60, price2Label: '60 ml', category: 'gin', ingredients: [], isFood: false },
+  { id: 'g-3', name: 'Gordon\'s', description: 'London dry gin.', price: 20, priceLabel: '40 ml', price2: 30, price2Label: '60 ml', category: 'gin', ingredients: [], isFood: false },
 
   // --- SHOTS ---
-  { id: 'sh-1', name: 'Baby Guinness', description: 'Sweet layered shot.', price: 16, category: 'shot', ingredients: ['Kahlua', 'Bailey’s'], isFood: false },
+  { id: 'sh-1', name: 'Baby Guinness', description: 'Sweet layered shot.', price: 16, category: 'shot', ingredients: ['Kahlua', 'Bailey\'s'], isFood: false },
   { id: 'sh-2', name: 'Sambuca', description: 'Anise-flavored liqueur.', price: 27, category: 'shot', ingredients: ['Sambuca', 'Coffee Beans'], isFood: false },
-  { id: 'sh-3', name: 'Jager Zombie Brain', description: 'Spooky and strong.', price: 17, category: 'shot', ingredients: ['Peach Schnapps', 'Jägermeister', 'Bailey’s', 'Grenadine'], isFood: false },
-  { id: 'sh-4', name: 'Vanilla Zombie brain', description: 'Sweet spooky shot.', price: 17, category: 'shot', ingredients: ['Peach Schnapps', 'Vanilla Vodka', 'Bailey’s', 'Grenadine'], isFood: false },
-  { id: 'sh-5', name: 'B-52', description: 'Classic layered shot.', price: 16, category: 'shot', ingredients: ['Kahlua', 'Bailey’s', 'Cointreau'], isFood: false },
-  { id: 'sh-6', name: 'Alien Brain', description: 'Colorful shot.', price: 17, category: 'shot', ingredients: ['Peach Schnapps', 'Blue Curaçao', 'Bailey’s', 'Grenadine'], isFood: false },
+  { id: 'sh-3', name: 'Jager Zombie Brain', description: 'Spooky and strong.', price: 17, category: 'shot', ingredients: ['Peach Schnapps', 'Jägermeister', 'Bailey\'s', 'Grenadine'], isFood: false },
+  { id: 'sh-4', name: 'Vanilla Zombie Brain', description: 'Sweet spooky shot.', price: 17, category: 'shot', ingredients: ['Peach Schnapps', 'Vanilla Vodka', 'Bailey\'s', 'Grenadine'], isFood: false },
+  { id: 'sh-5', name: 'B-52', description: 'Classic layered shot.', price: 16, category: 'shot', ingredients: ['Kahlua', 'Bailey\'s', 'Cointreau'], isFood: false },
+  { id: 'sh-6', name: 'Alien Brain', description: 'Colorful shot.', price: 17, category: 'shot', ingredients: ['Peach Schnapps', 'Blue Curaçao', 'Bailey\'s', 'Grenadine'], isFood: false },
 
-  // --- SHOTS SET ---
-  { id: 'shs-1', name: 'Kamikadze', description: '4 Shots.', price: 29, category: 'shots_set', ingredients: ['Vodka', 'Blue Curaçao', 'Lemon juice'], isFood: false },
-  { id: 'shs-2', name: 'Lavender drop', description: '4 Shots.', price: 34, category: 'shots_set', ingredients: ['Gin', 'Lavender Syrup', 'Lemon juice', 'Simple Syrup'], isFood: false },
-  { id: 'shs-3', name: 'Fiery Mango', description: '4 Shots.', price: 33, category: 'shots_set', ingredients: ['Tequila', 'Passion Fruit Purée', 'Cointreau', 'Tabasco'], isFood: false },
+  // --- SHOTS SET (4 shots / 6 shots) ---
+  { id: 'shs-1', name: 'Kamikadze', description: 'Vodka, Blue Curaçao, Lemon juice.', price: 29, priceLabel: '4 shots', price2: 43.5, price2Label: '6 shots', category: 'shots_set', ingredients: ['Vodka', 'Blue Curaçao', 'Lemon juice'], isFood: false },
+  { id: 'shs-2', name: 'Lavender Drop', description: 'Gin, Lavender Syrup, Lemon juice, Simple Syrup.', price: 34, priceLabel: '4 shots', price2: 51, price2Label: '6 shots', category: 'shots_set', ingredients: ['Gin', 'Lavender Syrup', 'Lemon juice', 'Simple Syrup'], isFood: false },
+  { id: 'shs-3', name: 'Fiery Mango', description: 'Tequila, Passion Fruit Purée, Cointreau, Tabasco.', price: 33, priceLabel: '4 shots', price2: 49.5, price2Label: '6 shots', category: 'shots_set', ingredients: ['Tequila', 'Passion Fruit Purée', 'Cointreau', 'Tabasco'], isFood: false },
 
-  // --- VODKA ---
-  { id: 'v-1', name: 'Finlandia', description: 'Premium vodka.', price: 15, category: 'vodka', ingredients: [], isFood: false },
-  { id: 'v-2', name: 'Absolut', description: 'Swedish vodka.', price: 16, category: 'vodka', ingredients: [], isFood: false },
-  { id: 'v-3', name: 'Belvedere', description: 'Luxury vodka.', price: 45, category: 'vodka', ingredients: [], isFood: false },
-  { id: 'v-4', name: 'Grey Goose', description: 'French luxury vodka.', price: 50, category: 'vodka', ingredients: [], isFood: false },
+  // --- VODKA (40 ml / 60 ml) ---
+  { id: 'v-1', name: 'Finlandia', description: 'Premium vodka.', price: 15, priceLabel: '40 ml', price2: 22.5, price2Label: '60 ml', category: 'vodka', ingredients: [], isFood: false },
+  { id: 'v-2', name: 'Absolut', description: 'Swedish vodka.', price: 16, priceLabel: '40 ml', price2: 24, price2Label: '60 ml', category: 'vodka', ingredients: [], isFood: false },
+  { id: 'v-3', name: 'Belvedere', description: 'Luxury vodka.', price: 45, priceLabel: '40 ml', price2: 67.5, price2Label: '60 ml', category: 'vodka', ingredients: [], isFood: false },
+  { id: 'v-4', name: 'Grey Goose', description: 'French luxury vodka.', price: 50, priceLabel: '40 ml', price2: 75, price2Label: '60 ml', category: 'vodka', ingredients: [], isFood: false },
 
   // --- MOCKTAILS ---
   { id: 'm-1', name: 'Virgin Mojito', description: 'Refreshing non-alcoholic.', price: 20, category: 'mocktail', ingredients: ['Lime', 'Fresh Mint', 'Sparkling Water'], isFood: false },

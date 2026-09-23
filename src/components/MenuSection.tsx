@@ -132,7 +132,16 @@ export default function MenuSection({ language, menuItems }: MenuSectionProps) {
                             {item.name}
                           </h3>
                           <div className="flex-grow border-b border-dotted border-neutral-800 mx-2"></div>
-                          <span className="text-gold font-mono font-medium text-sm md:text-base shrink-0">{item.price} ZŁ</span>
+                          <div className="shrink-0 flex flex-col items-end gap-0.5">
+                            <span className="text-gold font-mono font-medium text-sm md:text-base">
+                              {item.price} ZŁ{item.priceLabel && <span className="text-[9px] text-neutral-500 ml-1 font-mono normal-case">/ {item.priceLabel}</span>}
+                            </span>
+                            {item.price2 && (
+                              <span className="text-[#a8874e] font-mono font-medium text-xs">
+                                {item.price2} ZŁ{item.price2Label && <span className="text-[9px] text-neutral-500 ml-1 font-mono normal-case">/ {item.price2Label}</span>}
+                              </span>
+                            )}
+                          </div>
                         </div>
 
                         <p className="text-xs text-neutral-400 font-sans leading-relaxed mt-3">
@@ -205,7 +214,18 @@ export default function MenuSection({ language, menuItems }: MenuSectionProps) {
 
                   <div className="flex justify-between items-center py-4 px-5 bg-neutral-950 border border-neutral-900 mb-8 rounded-none">
                     <span className="text-xs uppercase font-mono tracking-widest text-[#8C8476]">{language === 'pl' ? 'Cena' : 'Price'}</span>
-                    <span className="text-gold font-mono text-xl font-semibold">{selectedItem.price}.00 ZŁ</span>
+                    <div className="flex flex-col items-end gap-1">
+                      <span className="text-gold font-mono text-xl font-semibold">
+                        {selectedItem.price} ZŁ
+                        {selectedItem.priceLabel && <span className="text-xs text-neutral-500 ml-2 font-mono">/ {selectedItem.priceLabel}</span>}
+                      </span>
+                      {selectedItem.price2 && (
+                        <span className="text-[#a8874e] font-mono text-base font-semibold">
+                          {selectedItem.price2} ZŁ
+                          {selectedItem.price2Label && <span className="text-xs text-neutral-500 ml-2 font-mono">/ {selectedItem.price2Label}</span>}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   <div className="mb-8">
