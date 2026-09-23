@@ -10,7 +10,7 @@ export default function AmbienceSection({ language }: AmbienceSectionProps) {
   const images = {
     booths: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80",
     counter: "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=800&q=80",
-    vault: "https://images.unsplash.com/photo-1600862025178-5aee093f443b?auto=format&fit=crop&w=800&q=80"
+    vault: "https://images.unsplash.com/photo-1582222308762-8178d21c35b4?auto=format&fit=crop&w=800&q=80"
   };
 
   const sections = [
