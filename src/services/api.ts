@@ -31,21 +31,7 @@ export const ApiService = {
   // --- MENU ITEMS ---
   
   async getMenuItems(): Promise<MenuItem[]> {
-    try {
-      const { data, error } = await supabase
-        .from('menu_items')
-        .select('*')
-        .order('category', { ascending: true }); // or whatever order
-        
-      if (error || !data || data.length === 0) {
-        console.warn('Supabase not connected or empty table. Using fallback data.');
-        return MENU_ITEMS;
-      }
-      return data as MenuItem[];
-    } catch (e) {
-      console.warn('Supabase fetch failed. Using fallback data.', e);
-      return MENU_ITEMS;
-    }
+    return MENU_ITEMS;
   },
 
   async addMenuItem(item: MenuItem): Promise<MenuItem[]> {
