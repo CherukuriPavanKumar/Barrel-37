@@ -132,14 +132,16 @@ export default function MenuSection({ language, menuItems }: MenuSectionProps) {
                             {item.name}
                           </h3>
                           <div className="flex-grow border-b border-dotted border-neutral-800 mx-2"></div>
-                          <div className="shrink-0 flex flex-col items-end gap-0.5">
-                            <span className="text-gold font-mono font-medium text-sm md:text-base">
-                              {item.price} ZŁ{item.priceLabel && <span className="text-[9px] text-neutral-500 ml-1 font-mono normal-case">/ {item.priceLabel}</span>}
-                            </span>
+                          <div className="shrink-0 flex flex-col items-end gap-1">
+                            <div className="flex items-baseline gap-1.5">
+                              <span className="text-gold font-mono font-medium text-sm md:text-base tracking-wide">{item.price} ZŁ</span>
+                              {item.priceLabel && <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-[0.1em]">/ {item.priceLabel}</span>}
+                            </div>
                             {item.price2 && (
-                              <span className="text-[#a8874e] font-mono font-medium text-xs">
-                                {item.price2} ZŁ{item.price2Label && <span className="text-[9px] text-neutral-500 ml-1 font-mono normal-case">/ {item.price2Label}</span>}
-                              </span>
+                              <div className="flex items-baseline gap-1.5 opacity-70">
+                                <span className="text-gold font-mono font-medium text-xs md:text-sm tracking-wide">{item.price2} ZŁ</span>
+                                {item.price2Label && <span className="text-[9px] text-neutral-500 font-mono uppercase tracking-[0.1em]">/ {item.price2Label}</span>}
+                              </div>
                             )}
                           </div>
                         </div>
@@ -215,15 +217,15 @@ export default function MenuSection({ language, menuItems }: MenuSectionProps) {
                   <div className="flex justify-between items-center py-4 px-5 bg-neutral-950 border border-neutral-900 mb-8 rounded-none">
                     <span className="text-xs uppercase font-mono tracking-widest text-[#8C8476]">{language === 'pl' ? 'Cena' : 'Price'}</span>
                     <div className="flex flex-col items-end gap-1">
-                      <span className="text-gold font-mono text-xl font-semibold">
-                        {selectedItem.price} ZŁ
-                        {selectedItem.priceLabel && <span className="text-xs text-neutral-500 ml-2 font-mono">/ {selectedItem.priceLabel}</span>}
-                      </span>
+                      <div className="flex items-baseline gap-2">
+                        <span className="text-gold font-mono text-xl font-semibold tracking-wide">{selectedItem.price} ZŁ</span>
+                        {selectedItem.priceLabel && <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest">/ {selectedItem.priceLabel}</span>}
+                      </div>
                       {selectedItem.price2 && (
-                        <span className="text-[#a8874e] font-mono text-base font-semibold">
-                          {selectedItem.price2} ZŁ
-                          {selectedItem.price2Label && <span className="text-xs text-neutral-500 ml-2 font-mono">/ {selectedItem.price2Label}</span>}
-                        </span>
+                        <div className="flex items-baseline gap-2 opacity-70">
+                          <span className="text-gold font-mono text-base font-semibold tracking-wide">{selectedItem.price2} ZŁ</span>
+                          {selectedItem.price2Label && <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-widest">/ {selectedItem.price2Label}</span>}
+                        </div>
                       )}
                     </div>
                   </div>

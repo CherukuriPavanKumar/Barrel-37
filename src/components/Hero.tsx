@@ -100,12 +100,17 @@ export default function Hero({ setActivePage, language }: HeroProps) {
                 {t.heroPreTitle}
               </motion.div>
 
-              <motion.div variants={itemVariants} className="space-y-2">
-                <span className="text-[11px] font-mono tracking-[0.4em] text-gold uppercase block">{t.heroTitle1}</span>
-                <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif tracking-tight leading-[1.05] text-cream uppercase">
-                  {t.heroTitle2} <br />
-                  <span className="text-2xl sm:text-3xl md:text-4xl font-sans font-light text-gold tracking-widest pl-1 block sm:inline mt-4">{t.heroTitle3}</span>
+              <motion.div variants={itemVariants} className="space-y-4">
+                {t.heroTitle1 && <span className="text-[11px] font-mono tracking-[0.4em] text-gold uppercase block">{t.heroTitle1}</span>}
+                <h1 className="text-6xl sm:text-7xl md:text-8xl font-serif tracking-[0.1em] leading-none text-cream uppercase">
+                  {t.heroTitle2}
                 </h1>
+                <div className="flex items-center gap-4 pt-2">
+                  <div className="h-px bg-gold/40 w-8 md:w-16"></div>
+                  <span className="text-xs sm:text-sm font-sans font-light text-gold tracking-[0.3em] uppercase">
+                    {t.heroTitle3}
+                  </span>
+                </div>
               </motion.div>
 
               <motion.p variants={itemVariants} className="text-sm md:text-base text-neutral-400 font-sans max-w-xl leading-relaxed">
