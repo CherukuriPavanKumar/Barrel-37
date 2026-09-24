@@ -102,9 +102,9 @@ export default function Hero({ setActivePage, language }: HeroProps) {
 
               <motion.div variants={itemVariants} className="space-y-2">
                 <span className="text-[11px] font-mono tracking-[0.4em] text-gold uppercase block">{t.heroTitle1}</span>
-                <h1 className="text-4xl sm:text-5xl md:text-7xl font-serif tracking-tight leading-[1.05] text-cream">
+                <h1 className="text-5xl sm:text-6xl md:text-8xl font-serif tracking-tight leading-[1.05] text-cream uppercase">
                   {t.heroTitle2} <br />
-                  <span className="italic font-light text-gold text-3xl sm:text-4xl md:text-6xl pl-1 block sm:inline">{t.heroTitle3}</span>
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-sans font-light text-gold tracking-widest pl-1 block sm:inline mt-4">{t.heroTitle3}</span>
                 </h1>
               </motion.div>
 
@@ -177,51 +177,7 @@ export default function Hero({ setActivePage, language }: HeroProps) {
         </div>
       </section>
 
-      {/* 2. DYNAMIC STATS PANEL */}
-      <section className="border-b border-[#181818] bg-[#020202]">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#181818]">
-          
-          <div className="py-10 md:py-14 pr-4 md:pr-8 flex items-start gap-4">
-            <div className="w-10 h-10 border border-neutral-800 bg-neutral-950 flex items-center justify-center shrink-0">
-              <Compass size={16} className="text-gold" />
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] text-gold font-mono tracking-[0.25em] uppercase">{t.statSpiritsLbl}</span>
-              <h3 className="text-2xl font-serif text-cream font-medium leading-none mt-1">{t.statSpiritsVal} Single Malts</h3>
-              <p className="text-xs text-neutral-500 font-sans leading-relaxed mt-1">
-                {language === 'pl' ? 'Szkocja, Japonia, Irlandia oraz unikalne indie.' : 'Sourced meticulously from Scotland, Japan, Ireland and exotic distilleries.'}
-              </p>
-            </div>
-          </div>
-
-          <div className="py-10 md:py-14 px-1 md:px-8 flex items-start gap-4">
-            <div className="w-10 h-10 border border-neutral-800 bg-neutral-950 flex items-center justify-center shrink-0">
-              <Sparkles size={16} className="text-gold" />
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] text-gold font-mono tracking-[0.25em] uppercase">{t.statFoundedLbl}</span>
-              <h3 className="text-2xl font-serif text-cream font-medium leading-none mt-1">Est. {t.statFoundedVal}</h3>
-              <p className="text-xs text-neutral-500 font-sans leading-relaxed mt-1">
-                {language === 'pl' ? 'Powstały z miłości do autentycznego rzemiosła.' : 'Forged behind a hidden black mahogany entrance on ul. Dietla.'}
-              </p>
-            </div>
-          </div>
-
-          <div className="py-10 md:py-14 pl-1 md:pl-8 flex items-start gap-4">
-            <div className="w-10 h-10 border border-neutral-800 bg-neutral-950 flex items-center justify-center shrink-0">
-              <ShieldCheck size={16} className="text-gold" />
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] text-gold font-mono tracking-[0.25em] uppercase">{t.statCocktailsLbl}</span>
-              <h3 className="text-2xl font-serif text-cream font-medium leading-none mt-1">{t.statCocktailsVal} Recipies</h3>
-              <p className="text-xs text-neutral-500 font-sans leading-relaxed mt-1">
-                {language === 'pl' ? 'Precyzyjnie dobrane sygnatury w starym stylu.' : 'Crafted with the restraint, measure, and pride of a lost era.'}
-              </p>
-            </div>
-          </div>
-
-        </div>
-      </section>
+      {/* DYNAMIC STATS PANEL REMOVED */}
 
       {/* 3. STORY SECTION */}
       <section className="py-20 md:py-32 border-b border-[#181818] relative">

@@ -6,7 +6,7 @@ export interface MenuItem {
   priceLabel?: string;    // label for primary price e.g. "40 ml"
   price2?: number;        // secondary price (e.g. 60ml / 6 shots)
   price2Label?: string;   // label for secondary price e.g. "60 ml"
-  category: 'whiskey' | 'cocktail' | 'house_signature' | 'spritz' | 'sour' | 'rum' | 'tequila' | 'gin' | 'shot' | 'shots_set' | 'vodka' | 'mocktail' | 'burger' | 'chicken_wings' | 'combo' | 'appetizer' | 'side';
+  category: 'whiskey' | 'cocktail' | 'house_signature' | 'spritz' | 'sour' | 'rum' | 'tequila' | 'gin' | 'shot' | 'shots_set' | 'vodka' | 'mocktail' | 'beer' | 'soft_drink' | 'burger' | 'chicken_wings' | 'combo' | 'appetizer' | 'side';
   ingredients: string[];
   calories?: number;
   sensoryNotes?: string;

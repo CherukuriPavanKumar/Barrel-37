@@ -79,6 +79,27 @@ export const MENU_ITEMS: MenuItem[] = [
   { id: 'm-2', name: 'Passion Martini', description: 'Fruity non-alcoholic.', price: 23, category: 'mocktail', ingredients: ['Green Tea', 'Passion Fruit Purée', 'Lemon Juice'], isFood: false },
   { id: 'm-3', name: 'Bitter Spritz', description: 'Bitter non-alcoholic.', price: 21, category: 'mocktail', ingredients: ['Bitter Syrup', 'Tonic'], isFood: false },
 
+  // --- DRAUGHT BEER ---
+  { id: 'b-1', name: 'Budweiser (Draught)', description: 'Classic draft beer.', price: 14, priceLabel: '300 ml', price2: 16, price2Label: '500 ml', category: 'beer', ingredients: [], isFood: false },
+  { id: 'b-2', name: 'Stella Artois (Draught)', description: 'Premium draft beer.', price: 14, priceLabel: '300 ml', price2: 16, price2Label: '500 ml', category: 'beer', ingredients: [], isFood: false },
+  { id: 'b-3', name: 'Hoegaarden (Draught)', description: 'Wheat draft beer.', price: 18, priceLabel: '300 ml', price2: 20, price2Label: '500 ml', category: 'beer', ingredients: [], isFood: false },
+
+  // --- BOTTLED BEER ---
+  { id: 'b-4', name: 'Corona Extra', description: 'Bottled beer.', price: 15, priceLabel: '330 ml', category: 'beer', ingredients: [], isFood: false },
+  { id: 'b-5', name: 'Corona Cero 0%', description: 'Non-alcoholic bottled beer.', price: 15, priceLabel: '330 ml', category: 'beer', ingredients: [], isFood: false },
+  { id: 'b-6', name: 'Leffe Blonde', description: 'Bottled beer.', price: 19, priceLabel: '330 ml', category: 'beer', ingredients: [], isFood: false },
+  { id: 'b-7', name: 'Franziskaner Weissbier', description: 'Bottled wheat beer.', price: 20, priceLabel: '500 ml', category: 'beer', ingredients: [], isFood: false },
+  
+  // --- BEER SPECIALS ---
+  { id: 'b-8', name: 'Corona Extra Bucket', description: 'Buy 5 get 1 free.', price: 75, priceLabel: '6 x 330 ml', category: 'beer', ingredients: [], isFood: false },
+  
+  // --- SOFT DRINKS ---
+  { id: 'sd-1', name: 'Cola / Cola Zero', description: 'Refreshing soda.', price: 10, category: 'soft_drink', ingredients: [], isFood: false },
+  { id: 'sd-2', name: 'Sprite', description: 'Lemon-lime soda.', price: 10, category: 'soft_drink', ingredients: [], isFood: false },
+  { id: 'sd-3', name: 'Red Bull', description: 'Energy drink.', price: 15, category: 'soft_drink', ingredients: [], isFood: false },
+  { id: 'sd-4', name: 'Schweppes', description: 'Tonic water.', price: 8, category: 'soft_drink', ingredients: [], isFood: false },
+  { id: 'sd-5', name: 'Water', description: 'Still or sparkling water.', price: 6, category: 'soft_drink', ingredients: [], isFood: false },
+
   // --- SIGNATURE BURGERS (FOOD) ---
   { id: 'fb-1', name: 'Barrel BBQ Burger', description: '180 g beef patty on a brioche bun with double Cheddar, crispy bacon, romaine lettuce, tomato, red onion, smoky mayo and our signature Barrel BBQ sauce. Served with fries, coleslaw and ketchup.', price: 52, category: 'burger', ingredients: ['180g beef patty', 'brioche bun', 'double Cheddar', 'crispy bacon', 'romaine lettuce', 'tomato', 'red onion', 'smoky mayo', 'Barrel BBQ sauce'], isFood: true },
   { id: 'fb-2', name: 'Double Smash Cheeseburger', description: '2 x 90 g smashed beef patties, brioche bun, Cheddar, red onion, romaine lettuce and our Barrel Special Sauce. Served with fries, coleslaw and ketchup.', price: 47, category: 'burger', ingredients: ['2x90g smashed beef', 'brioche bun', 'Cheddar', 'red onion', 'romaine lettuce', 'Barrel Special Sauce'], isFood: true },
