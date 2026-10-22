@@ -8,8 +8,8 @@ interface FindUsSectionProps {
 export default function FindUsSection({ language }: FindUsSectionProps) {
   
   const schedules = [
-    { day: language === 'pl' ? 'Poniedziałek' : 'Monday', hours: language === 'pl' ? 'Zamknięte (Odpoczynek)' : 'Closed (Rest Day)' },
-    { day: language === 'pl' ? 'Wtorek - Niedziela' : 'Tuesday - Sunday', hours: '12:00 — 00:00' },
+    { day: language === 'pl' ? 'Poniedziałek' : 'Monday', hours: language === 'pl' ? 'Zamknięte' : 'Closed' },
+    { day: language === 'pl' ? 'Wtorek - Niedziela' : 'Tuesday - Sunday', hours: language === 'pl' ? '12:00 — 22:30' : '12:00 PM — 10:30 PM' },
   ];
 
   return (
@@ -75,7 +75,7 @@ export default function FindUsSection({ language }: FindUsSectionProps) {
                 </div>
                 <div>
                   <p className="text-[9px] font-mono text-neutral-500 uppercase leading-none">{language === 'pl' ? 'REZERWACJA / TELEFON' : 'RESERVATIONS PHONE'}</p>
-                  <p className="font-sans text-cream font-medium mt-1">+48-500458966</p>
+                  <p className="font-sans text-cream font-medium mt-1">+48 500 458 966</p>
                 </div>
               </div>
 

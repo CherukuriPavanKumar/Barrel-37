@@ -33,9 +33,54 @@ export default function MenuSection({ language, menuItems }: MenuSectionProps) {
     return acc;
   }, {} as Record<string, MenuItem[]>);
 
+  const CATEGORY_NAMES: Record<Language, Record<string, string>> = {
+    en: {
+      whiskey: 'WHISKEY',
+      cocktail: 'CLASSIC COCKTAILS',
+      house_signature: 'HOUSE SIGNATURES',
+      spritz: 'SPRITZ',
+      sour: 'SOURS',
+      rum: 'RUM',
+      tequila: 'TEQUILA',
+      gin: 'GIN',
+      shot: 'SHOTS',
+      shots_set: 'SHOTS SET',
+      vodka: 'VODKA',
+      mocktail: 'MOCKTAILS (NON-ALCOHOLIC)',
+      beer: 'BEER',
+      soft_drink: 'SOFT DRINKS',
+      burger: 'SIGNATURE BURGERS',
+      chicken_wings: 'CHICKEN & WINGS',
+      combo: 'BARREL COMBOS',
+      appetizer: 'APPETIZERS',
+      side: 'SIDES'
+    },
+    pl: {
+      whiskey: 'WHISKY',
+      cocktail: 'KLASYCZNE KOKTAJLE',
+      house_signature: 'AUTORSKIE DRINKI',
+      spritz: 'SPRITZ',
+      sour: 'SOURS',
+      rum: 'RUM',
+      tequila: 'TEQUILA',
+      gin: 'GIN',
+      shot: 'SHOTY',
+      shots_set: 'ZESTAWY SHOTÓW',
+      vodka: 'WÓDKA',
+      mocktail: 'BEZALKOHOLOWE',
+      beer: 'PIWO',
+      soft_drink: 'NAPOJE BEZALKOHOLOWE',
+      burger: 'BURGERY FIRMOWE',
+      chicken_wings: 'KURCZAK I SKRZYDEŁKA',
+      combo: 'ZESTAWY BARREL',
+      appetizer: 'PRZYSTAWKI',
+      side: 'DODATKI'
+    }
+  };
+
   // Helper to format category names nicely
   const formatCategory = (cat: string) => {
-    return cat.replace(/_/g, ' ').toUpperCase();
+    return CATEGORY_NAMES[language]?.[cat] || cat.replace(/_/g, ' ').toUpperCase();
   };
 
   return (

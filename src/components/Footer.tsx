@@ -93,7 +93,7 @@ export default function Footer({ setActivePage, language }: FooterProps) {
             <div>
               <p>ul. Józefa Dietla 37, Kraków,<br />31-062, Poland</p>
               <p className="text-[11px] text-neutral-500 font-mono mt-1">joinusbarrel37@gmail.com</p>
-              <p className="text-[11px] text-neutral-500 font-mono mt-1">+48-500458966</p>
+              <p className="text-[11px] text-neutral-500 font-mono mt-1">+48 500 458 966</p>
             </div>
           </div>
         </div>
@@ -103,7 +103,7 @@ export default function Footer({ setActivePage, language }: FooterProps) {
           <span className="text-[10px] text-neutral-500 uppercase tracking-[0.3em] font-mono">{t.openingHours}</span>
           <p className="text-xs text-neutral-300 font-sans leading-relaxed">
             {language === 'pl' ? 'Wtorek — Niedziela' : 'Tuesday — Sunday'}<br />
-            12:00 PM — 12:00 AM
+            {language === 'pl' ? '12:00 — 22:30' : '12:00 PM — 10:30 PM'}
           </p>
           <div className="pt-2 border-t border-[#181818] mt-2 text-[10px] text-neutral-500">
             <span className="block">{language === 'pl' ? 'Poniedziałek — Zamknięte' : 'Monday — Closed'}</span>

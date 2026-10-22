@@ -25,9 +25,9 @@ export default function ReservationSection({ language }: ReservationSectionProps
   const [loading, setLoading] = useState(false);
   const [confirmedReservation, setConfirmedReservation] = useState<Reservation | null>(null);
 
-  // Default fine dining times
+  // Operating hours: Tuesday–Sunday 12:00 PM – 10:30 PM (Last seating 21:30)
   const timeSlots = [
-    '11:30', '12:00', '12:30', '13:00', '13:30', '14:00',
+    '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00',
     '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30'
   ];
 
@@ -42,6 +42,13 @@ export default function ReservationSection({ language }: ReservationSectionProps
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formData.fullName || !formData.email || !formData.phone || !formData.date) {
+      return;
+    }
+
+    // Verify day is not Monday (closed)
+    const selectedDay = new Date(formData.date + 'T12:00:00').getDay();
+    if (selectedDay === 1) {
+      alert(language === 'pl' ? 'Barrel 37 jest nieczynny w poniedziałki. Prosimy wybrać termin od wtorku do niedzieli.' : 'Barrel 37 is closed on Mondays. Please choose Tuesday through Sunday.');
       return;
     }
 
@@ -121,6 +128,13 @@ export default function ReservationSection({ language }: ReservationSectionProps
                     onChange={handleChange}
                     className="w-full bg-[#030303] border border-neutral-900 px-4 py-3.5 text-sm text-cream font-sans focus:outline-none focus:border-gold transition-colors block rounded-none cursor-pointer"
                   />
+                  {formData.date && new Date(formData.date + 'T12:00:00').getDay() === 1 && (
+                    <p className="text-[11px] text-amber-500 font-mono mt-1">
+                      {language === 'pl'
+                        ? 'Barrel 37 jest nieczynny w poniedziałki. Wybierz wtorek – niedzielę.'
+                        : 'Barrel 37 is closed on Mondays. Please choose Tuesday – Sunday.'}
+                    </p>
+                  )}
                 </div>
 
                 {/* 2. Dining Time */}
@@ -347,8 +361,8 @@ export default function ReservationSection({ language }: ReservationSectionProps
 
               <div className="text-[10px] text-neutral-500 font-sans max-w-sm">
                 {language === 'pl' 
-                  ? `Cyfrowy bilet potwierdzający został wysłany na adres: ${confirmedReservation.email}. W sprawie modyfikacji lub anulowania rezerwacji, prosimy o kontakt pod numerem +48 22 555 01 28.` 
-                  : `A digital confirmation pass has been dispatched to ${confirmedReservation.email}. For modification or early cancellation, dial +1 (212) 555-0128.`}
+                  ? `Cyfrowy bilet potwierdzający został wysłany na adres: ${confirmedReservation.email}. W sprawie modyfikacji lub anulowania rezerwacji, prosimy o kontakt pod numerem +48 500 458 966.` 
+                  : `A digital confirmation pass has been dispatched to ${confirmedReservation.email}. For modification or early cancellation, dial +48 500 458 966.`}
               </div>
 
               {/* Return shortcut */}

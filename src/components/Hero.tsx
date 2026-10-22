@@ -13,8 +13,8 @@ export default function Hero({ setActivePage, language }: HeroProps) {
   const t = TRANSLATIONS[language];
   const [activeStep, setActiveStep] = useState<number>(0);
 
-  // Unsplash images selected specifically for the high-end rustic speakeasy feel.
-  const HEROBAR_IMAGE = "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80";
+  // Front image: Removed garden photo per client request. Set URL here once new picture is provided.
+  const HEROBAR_IMAGE = "";
   const STORYBAR_IMAGE = "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=800&q=80";
   const INTERIORBAR_IMAGE = "https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=1200&q=80";
 
@@ -162,16 +162,45 @@ export default function Hero({ setActivePage, language }: HeroProps) {
                 <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-gold z-20"></div>
                 
                 <div className="w-full h-[320px] md:h-[450px] overflow-hidden relative">
-                  <img
-                    src={HEROBAR_IMAGE}
-                    alt="Barrel 37 Ambient Whiskey Space"
-                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[2000ms] object-center"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                  {HEROBAR_IMAGE ? (
+                    <img
+                      src={HEROBAR_IMAGE}
+                      alt="Barrel 37 Ambient Space"
+                      className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[2000ms] object-center"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#14120e] via-[#0a0a0a] to-[#040404] p-8 text-center border border-gold/15 relative overflow-hidden select-none">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,159,104,0.08)_0%,transparent_70%)] pointer-events-none"></div>
+                      
+                      {/* Stylized crest / emblem */}
+                      <div className="w-24 h-24 rounded-full border border-gold/30 bg-black/70 flex items-center justify-center mb-6 shadow-2xl relative">
+                        <img 
+                          src="/logo.jpeg" 
+                          alt="Barrel 37 Logo" 
+                          className="w-20 h-20 rounded-full object-cover opacity-90"
+                        />
+                        <div className="absolute -inset-1 rounded-full border border-gold/20 animate-pulse"></div>
+                      </div>
+
+                      <span className="text-[10px] font-mono tracking-[0.3em] text-gold uppercase mb-2">
+                        {language === 'pl' ? 'BAR & RESTAURACJA' : 'BAR & RESTAURANT'}
+                      </span>
+                      <h3 className="text-2xl md:text-3xl font-serif text-cream tracking-wider uppercase font-medium mb-3">
+                        BARREL 37
+                      </h3>
+                      <div className="h-px w-16 bg-gradient-to-r from-transparent via-gold/50 to-transparent mb-4"></div>
+                      <p className="text-xs text-neutral-400 font-sans tracking-wide max-w-xs leading-relaxed">
+                        {language === 'pl' 
+                          ? 'Nowe zdjęcie lokalu wkrótce' 
+                          : 'New photograph coming soon'}
+                      </p>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
                   
                   {/* Absolute visual tags for high status impression */}
-                  <div className="absolute bottom-6 left-6 right-6 font-mono text-[9px] tracking-[0.2em] text-gold uppercase bg-black/90 px-4 py-2 text-center border border-[#cbbba0]/20">
+                  <div className="absolute bottom-6 left-6 right-6 font-mono text-[9px] tracking-[0.2em] text-gold uppercase bg-black/90 px-4 py-2 text-center border border-[#cbbba0]/20 z-10">
                     {language === 'pl' ? 'KAZIMIERZ, DIETLA 37' : 'KRYPTA KAZIMIERZ, CRACOW'}
                   </div>
                 </div>
