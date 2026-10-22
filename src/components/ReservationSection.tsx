@@ -59,7 +59,9 @@ export default function ReservationSection({ language }: ReservationSectionProps
       setConfirmedReservation(reservation);
     } catch (error) {
       console.error(error);
-      // In a real app, show error state here.
+      alert(language === 'pl'
+        ? 'Nie udało się wysłać rezerwacji. Prosimy zadzwonić pod numer +48 500 458 966.'
+        : 'We could not send your reservation. Please call us at +48 500 458 966.');
     } finally {
       setLoading(false);
     }
@@ -361,8 +363,8 @@ export default function ReservationSection({ language }: ReservationSectionProps
 
               <div className="text-[10px] text-neutral-500 font-sans max-w-sm">
                 {language === 'pl' 
-                  ? `Cyfrowy bilet potwierdzający został wysłany na adres: ${confirmedReservation.email}. W sprawie modyfikacji lub anulowania rezerwacji, prosimy o kontakt pod numerem +48 500 458 966.` 
-                  : `A digital confirmation pass has been dispatched to ${confirmedReservation.email}. For modification or early cancellation, dial +48 500 458 966.`}
+                  ? `Twoja prośba o rezerwację została przekazana do Barrel 37. W sprawie modyfikacji lub anulowania rezerwacji, prosimy o kontakt pod numerem +48 500 458 966.`
+                  : `Your reservation request has been sent to Barrel 37. For modification or early cancellation, dial +48 500 458 966.`}
               </div>
 
               {/* Return shortcut */}

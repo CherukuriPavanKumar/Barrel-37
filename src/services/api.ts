@@ -88,7 +88,31 @@ export const ApiService = {
        localStorage.setItem('barrel37_reservations', JSON.stringify(allRes));
     }
 
+    const notified = await this.notifyBooking(newRes);
+
+    // If neither the database nor the email/SMS notification got through, the restaurant
+    // would never see this booking, so don't show the guest a false confirmation.
+    if (error && !notified) {
+      throw new Error('Reservation could not be delivered');
+    }
+
     return newRes;
+  },
+
+  async notifyBooking(reservation: Reservation): Promise<boolean> {
+    try {
+      const res = await fetch('/api/notify-booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(reservation),
+      });
+      // Check the JSON body, not just the status: a static dev server answers 200 with index.html
+      const data = await res.json().catch(() => null);
+      return !!data?.ok;
+    } catch (e) {
+      console.error('Booking notification failed:', e);
+      return false;
+    }
   },
 
   async getReservations(): Promise<Reservation[]> {
