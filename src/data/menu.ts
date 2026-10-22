@@ -3,9 +3,9 @@ import { MenuItem } from '../types';
 export const MENU_ITEMS: MenuItem[] = [
   // --- WHISKEY (40 ml / 60 ml) ---
   { id: 'w-1', name: 'Royal Salute', description: 'Premium blended Scotch whisky.', price: 175, priceLabel: '40 ml', price2: 262.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-2', name: 'Johnny Walker Blue Label', description: 'An unrivaled masterpiece.', price: 195, priceLabel: '40 ml', price2: 292.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-3', name: 'Johnny Walker Red Label', description: 'The world\'s best-selling Scotch whisky.', price: 18, priceLabel: '40 ml', price2: 27, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
-  { id: 'w-4', name: 'Johnny Walker Black Label', description: 'A true icon.', price: 26, priceLabel: '40 ml', price2: 39, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-2', name: 'Johnnie Walker Blue Label', description: 'An unrivaled masterpiece.', price: 195, priceLabel: '40 ml', price2: 292.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-3', name: 'Johnnie Walker Red Label', description: 'The world\'s best-selling Scotch whisky.', price: 18, priceLabel: '40 ml', price2: 27, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
+  { id: 'w-4', name: 'Johnnie Walker Black Label', description: 'A true icon.', price: 26, priceLabel: '40 ml', price2: 39, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
   { id: 'w-5', name: 'Chivas Regal 12 YO', description: 'Smooth, rich and generous.', price: 35, priceLabel: '40 ml', price2: 52.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
   { id: 'w-6', name: 'Chivas Regal XV', description: 'Aged 15 years.', price: 55, priceLabel: '40 ml', price2: 82.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },
   { id: 'w-7', name: 'Grant\'s', description: 'Triple wood blended Scotch whisky.', price: 19, priceLabel: '40 ml', price2: 28.5, price2Label: '60 ml', category: 'whiskey', ingredients: [], isFood: false },

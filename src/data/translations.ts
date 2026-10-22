@@ -341,7 +341,7 @@ export const TRANSLATIONS: Record<Language, TranslationDict> = {
     skipContent: 'Przejdź do treści',
     brandSub: 'BAR & RESTAURANT',
 
-    heroPreTitle: 'Zał. 2026 · Premium Bar & Restaurant',
+    heroPreTitle: 'Zał. 2026 · Bar & Restauracja',
     heroTitle1: '',
     heroTitle2: 'BARREL37',
     heroTitle3: 'Bar • Restaurant • Cocktails • Burgers',

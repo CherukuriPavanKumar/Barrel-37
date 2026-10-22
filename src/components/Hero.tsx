@@ -13,9 +13,10 @@ export default function Hero({ setActivePage, language }: HeroProps) {
   const t = TRANSLATIONS[language];
   const [activeStep, setActiveStep] = useState<number>(0);
 
-  // Front image: Removed garden photo per client request. Set URL here once new picture is provided.
-  const HEROBAR_IMAGE = "";
-  const STORYBAR_IMAGE = "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=800&q=80";
+  // Unsplash images selected specifically for the high-end rustic speakeasy feel.
+  const HEROBAR_IMAGE = "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80";
+  // Story image: garden photo removed per client request. Set the client's new picture URL here once provided.
+  const STORYBAR_IMAGE = "";
   const INTERIORBAR_IMAGE = "https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=1200&q=80";
 
   // Journey steps data (multi-language supported)
@@ -162,41 +163,12 @@ export default function Hero({ setActivePage, language }: HeroProps) {
                 <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-gold z-20"></div>
                 
                 <div className="w-full h-[320px] md:h-[450px] overflow-hidden relative">
-                  {HEROBAR_IMAGE ? (
-                    <img
-                      src={HEROBAR_IMAGE}
-                      alt="Barrel 37 Ambient Space"
-                      className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[2000ms] object-center"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#14120e] via-[#0a0a0a] to-[#040404] p-8 text-center border border-gold/15 relative overflow-hidden select-none">
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,159,104,0.08)_0%,transparent_70%)] pointer-events-none"></div>
-                      
-                      {/* Stylized crest / emblem */}
-                      <div className="w-24 h-24 rounded-full border border-gold/30 bg-black/70 flex items-center justify-center mb-6 shadow-2xl relative">
-                        <img 
-                          src="/logo.jpeg" 
-                          alt="Barrel 37 Logo" 
-                          className="w-20 h-20 rounded-full object-cover opacity-90"
-                        />
-                        <div className="absolute -inset-1 rounded-full border border-gold/20 animate-pulse"></div>
-                      </div>
-
-                      <span className="text-[10px] font-mono tracking-[0.3em] text-gold uppercase mb-2">
-                        {language === 'pl' ? 'BAR & RESTAURACJA' : 'BAR & RESTAURANT'}
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-serif text-cream tracking-wider uppercase font-medium mb-3">
-                        BARREL 37
-                      </h3>
-                      <div className="h-px w-16 bg-gradient-to-r from-transparent via-gold/50 to-transparent mb-4"></div>
-                      <p className="text-xs text-neutral-400 font-sans tracking-wide max-w-xs leading-relaxed">
-                        {language === 'pl' 
-                          ? 'Nowe zdjęcie lokalu wkrótce' 
-                          : 'New photograph coming soon'}
-                      </p>
-                    </div>
-                  )}
+                  <img
+                    src={HEROBAR_IMAGE}
+                    alt="Barrel 37 Ambient Space"
+                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-[2000ms] object-center"
+                    referrerPolicy="no-referrer"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
                   
                   {/* Absolute visual tags for high status impression */}
@@ -222,12 +194,25 @@ export default function Hero({ setActivePage, language }: HeroProps) {
             <div className="lg:col-span-5 relative">
               <div className="border border-neutral-900 p-2 bg-[#090909]">
                 <div className="relative aspect-[4/5] overflow-hidden group">
-                  <img
-                    src={STORYBAR_IMAGE}
-                    alt="Premium Whiskey Selection"
-                    className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-all duration-[2000ms]"
-                    referrerPolicy="no-referrer"
-                  />
+                  {STORYBAR_IMAGE ? (
+                    <img
+                      src={STORYBAR_IMAGE}
+                      alt="Barrel 37"
+                      className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-all duration-[2000ms]"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    // Branded placeholder until the client's new picture arrives
+                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#14120e] via-[#0a0a0a] to-[#040404] pb-24 select-none">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,159,104,0.08)_0%,transparent_70%)] pointer-events-none"></div>
+                      <div className="w-28 h-28 rounded-full border border-gold/30 bg-black/70 flex items-center justify-center mb-6 shadow-2xl">
+                        <img src="/logo.jpeg" alt="Barrel 37 Logo" className="w-24 h-24 rounded-full object-cover opacity-90" />
+                      </div>
+                      <span className="text-[10px] font-mono tracking-[0.3em] text-gold uppercase">
+                        {language === 'pl' ? 'BAR & RESTAURACJA' : 'BAR & RESTAURANT'}
+                      </span>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6 text-center text-neutral-400 text-xs italic font-serif bg-black/50 p-3 backdrop-blur-xs">
                     "{language === 'pl' ? 'Whisky to nie tylko alkohol – to zamknięty w czasie krajobraz Szkocji.' : 'Whiskey is liquefied history, locked inside charred wood.'}"

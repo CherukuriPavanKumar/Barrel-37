@@ -10,9 +10,9 @@ export interface LocalizedMenuItem {
 export const POLISH_MENU_ITEMS: Record<string, LocalizedMenuItem> = {
   // --- WHISKEY (brand names preserved, descriptions translated) ---
   'w-1': { name: 'Royal Salute', description: 'Premierowa mieszana whisky szkocka.', ingredients: [] },
-  'w-2': { name: 'Johnny Walker Blue Label', description: 'Niezrównane arcydzieło.', ingredients: [] },
-  'w-3': { name: 'Johnny Walker Red Label', description: 'Najlepiej sprzedająca się whisky szkocka na świecie.', ingredients: [] },
-  'w-4': { name: 'Johnny Walker Black Label', description: 'Prawdziwa ikona.', ingredients: [] },
+  'w-2': { name: 'Johnnie Walker Blue Label', description: 'Niezrównane arcydzieło.', ingredients: [] },
+  'w-3': { name: 'Johnnie Walker Red Label', description: 'Najlepiej sprzedająca się whisky szkocka na świecie.', ingredients: [] },
+  'w-4': { name: 'Johnnie Walker Black Label', description: 'Prawdziwa ikona.', ingredients: [] },
   'w-5': { name: 'Chivas Regal 12 YO', description: 'Gładka, bogata i hojna.', ingredients: [] },
   'w-6': { name: 'Chivas Regal XV', description: 'Dojrzewana 15 lat.', ingredients: [] },
   'w-7': { name: 'Grant\'s', description: 'Potrójnie dębowa mieszana whisky szkocka.', ingredients: [] },
@@ -234,14 +234,24 @@ export const POLISH_MENU_ITEMS: Record<string, LocalizedMenuItem> = {
   },
 };
 
+// Price labels that contain English words (volume labels like "40 ml" need no translation)
+const POLISH_PRICE_LABELS: Record<string, string> = {
+  '4 shots': '4 shoty',
+  '6 shots': '6 shotów',
+};
+
+const localizePriceLabel = (label?: string) => (label && POLISH_PRICE_LABELS[label]) || label;
+
 export function getLocalizedItem(item: MenuItem, language: Language): MenuItem {
   if (language === 'en') return item;
-  
+
   const localized = POLISH_MENU_ITEMS[item.id];
   if (!localized) return item;
-  
+
   return {
     ...item,
+    priceLabel: localizePriceLabel(item.priceLabel),
+    price2Label: localizePriceLabel(item.price2Label),
     name: localized.name,
     description: localized.description,
     ingredients: localized.ingredients,

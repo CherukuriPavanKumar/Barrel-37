@@ -151,7 +151,7 @@ export default function MenuSection({ language, menuItems }: MenuSectionProps) {
                     >
                       {item.isPopular && (
                         <span className="absolute top-4 right-4 text-[9px] font-mono tracking-widest uppercase text-gold bg-black/85 px-2.5 py-1 border border-[#cbbba0]/20 flex items-center gap-1">
-                          <Flame size={10} className="fill-gold text-gold animate-pulse" /> Popular
+                          <Flame size={10} className="fill-gold text-gold animate-pulse" /> {language === 'pl' ? 'Popularne' : 'Popular'}
                         </span>
                       )}
 

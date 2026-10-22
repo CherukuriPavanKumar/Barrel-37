@@ -70,8 +70,8 @@ export default function Footer({ setActivePage, language }: FooterProps) {
               {t.about}
             </button>
             <button
-              id="footer_lnk_events"
-              onClick={() => setActivePage('events')}
+              id="footer_lnk_find_us"
+              onClick={() => setActivePage('find-us')}
               className="text-xs text-[#D0C9BC] hover:text-gold transition-colors font-sans cursor-pointer uppercase tracking-wider text-left"
             >
               {t.findUs}
