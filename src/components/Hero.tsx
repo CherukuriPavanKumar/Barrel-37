@@ -13,10 +13,10 @@ export default function Hero({ setActivePage, language }: HeroProps) {
   const t = TRANSLATIONS[language];
   const [activeStep, setActiveStep] = useState<number>(0);
 
-  // Unsplash images selected specifically for the high-end rustic speakeasy feel.
-  const HEROBAR_IMAGE = "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80";
-  const STORYBAR_IMAGE = "https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=800&q=80";
-  const INTERIORBAR_IMAGE = "https://images.unsplash.com/photo-1574096079513-d8259312b785?auto=format&fit=crop&w=1200&q=80";
+  // Local Barrel37 photography
+  const HEROBAR_IMAGE = "/images/barell37-3.jpg";
+  const STORYBAR_IMAGE = "/images/barell37-8.jpg";
+  const INTERIORBAR_IMAGE = "/images/IMG_3546.jpeg";
 
   // Journey steps data (multi-language supported)
   const journeySteps = [

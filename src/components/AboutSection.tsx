@@ -11,7 +11,7 @@ export default function AboutSection({ language }: AboutSectionProps) {
   const t = TRANSLATIONS[language];
   
   // Custom Unsplash interior images representing deep warm bar aesthetics
-  const AMBIENCE_SHELF = "https://images.unsplash.com/photo-1543007630-9710e4a00a20?auto=format&fit=crop&w=1200&q=80";
+  const AMBIENCE_SHELF = "/images/IMG_3801.jpeg";
 
   const pillars = [
     {
